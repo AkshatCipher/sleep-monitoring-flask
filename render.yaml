@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sleep-monitoring
+    env: python
+    plan: free
+    pythonVersion: "3.10"
+    buildCommand: |
+      apt-get update
+      apt-get install -y build-essential libblas-dev liblapack-dev
+      pip install --no-cache-dir -r requirements.txt
+    startCommand: gunicorn app:app
